@@ -1,0 +1,36 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Visual Studio / VSCode
+.vscode/
+*.csproj
+*.sln
+*.user
+*.unityproj
+*.pidb
+*.suo
+*.userprefs
+*.tmproj
+*.booproj
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Unity crash logs
+sysinfo.txt
+
+# Others
+*.apk
+*.unitypackage
+*.log
