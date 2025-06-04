@@ -322,7 +322,8 @@ MonoBehaviour:
   rb: {fileID: 592349431}
   sprite: {fileID: 592349432}
   moveSpeed: 10
-  jumpforce: 7
+  jumpforce: 10
+  DefaultGravity: 1
   HeroAnimator: {fileID: 592349434}
   RayOrigin: {fileID: 592349433}
   GroundLayer:

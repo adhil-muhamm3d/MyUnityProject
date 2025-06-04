@@ -7,6 +7,7 @@ public class playerMech : MonoBehaviour
     public SpriteRenderer sprite;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpforce;
+    [SerializeField] private float DefaultGravity = 1;
     public Animator HeroAnimator;
     [Space(20)]
     public Transform RayOrigin;
@@ -32,6 +33,7 @@ public class playerMech : MonoBehaviour
         Color Raycolor = hit.collider != null ? Color.green : Color.red;
         Debug.DrawRay(RayOrigin.position,Vector2.down*RayDistance,Raycolor);
         Jump();
+        Falling();
 
     }
 
@@ -86,7 +88,21 @@ public class playerMech : MonoBehaviour
         if(isGround && Input.GetButtonDown("Jump"))
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x,jumpforce);
+            
             HeroAnimator.SetTrigger("Jump");
+        }
+    }
+
+    public void Falling()
+    {
+        if(rb.linearVelocity.y < 0)
+        {
+            rb.gravityScale = DefaultGravity * 2;
+            HeroAnimator.SetTrigger("Fall");
+        }
+        else
+        {
+            rb.gravityScale = DefaultGravity;
         }
     }
 
