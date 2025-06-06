@@ -97,12 +97,13 @@ public class playerMech : MonoBehaviour
     {
         if(rb.linearVelocity.y < 0)
         {
-            rb.gravityScale = DefaultGravity * 2;
-            HeroAnimator.SetTrigger("Fall");
+            rb.gravityScale = DefaultGravity * 3;
+            HeroAnimator.SetBool("Fall",true);
         }
         else
         {
             rb.gravityScale = DefaultGravity;
+            HeroAnimator.SetBool("Fall",false);
         }
     }
 
