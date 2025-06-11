@@ -5,6 +5,8 @@ public class playerMech : MonoBehaviour
 
     public Rigidbody2D rb;
     public SpriteRenderer sprite;
+    public int HealthPoints = 5;
+    public GameObject GameOver;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpforce;
     [SerializeField] private float DefaultGravity = 1;
@@ -19,6 +21,11 @@ public class playerMech : MonoBehaviour
     public float RayDistance;
 
     public Punch punch;
+
+    void Awake()
+    {
+        Time.timeScale = 1;
+    }
 
     void Update()
     {
@@ -35,6 +42,29 @@ public class playerMech : MonoBehaviour
         Jump();
         Falling();
 
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Obstacle"))
+        {
+            Obstacle obstacle = other.GetComponent<Obstacle>();
+            obstacle.Activate();
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        HealthPoints -= damage;
+    }
+
+    public void LifeCheck()
+    {
+        if(HealthPoints<=0)
+        {
+            Time.timeScale = 0;
+            GameOver.SetActive(true);
+        }
     }
 
     public void Movement()
