@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class SpikeDamage : MonoBehaviour
+public class SpikeDamage : Obstacle
 {
     public int Damage = 3;
     private bool DamageTaken = false;
-    public void OnTriggerEnter2D(Collider2D other)
+    
+    public override int Activate()
     {
-        if(other.CompareTag("Player") && !DamageTaken)
-        {
-            DamageTaken = true;
-            other.GetComponent<playerMech>()?.TakeDamage(Damage);
-        }
-
+        if(DamageTaken) return 0;
+        DamageTaken = true;
+        return Damage;
     }
 }

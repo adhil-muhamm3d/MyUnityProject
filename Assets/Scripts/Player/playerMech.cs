@@ -49,7 +49,7 @@ public class playerMech : MonoBehaviour
         if(other.CompareTag("Obstacle"))
         {
             Obstacle obstacle = other.GetComponent<Obstacle>();
-            obstacle.Activate();
+            TakeDamage(obstacle.Activate());
         }
     }
 

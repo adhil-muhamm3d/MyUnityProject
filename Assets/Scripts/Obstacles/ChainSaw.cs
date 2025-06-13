@@ -6,6 +6,6 @@ public class ChainSaw : Obstacle
     public override int Activate()
     {
         Debug.Log("Saw Activated...");
-        return 0;
+        return damage;
     }
 }

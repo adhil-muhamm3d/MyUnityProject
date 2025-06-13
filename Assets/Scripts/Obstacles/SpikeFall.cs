@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpikeFall : Obstacle
+public class SpikeFall : MonoBehaviour
 {
     public int gforce = 2;
     private bool HasFallen = false;
@@ -13,7 +13,15 @@ public class SpikeFall : Obstacle
         rb = spike.GetComponent<Rigidbody2D>();
     }
 
-    public override int Activate()
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            spikeTrigger();
+        }
+    }
+
+    public int spikeTrigger()
     {
         if(HasFallen) return 0;
         HasFallen = true;
