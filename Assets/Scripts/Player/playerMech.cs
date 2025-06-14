@@ -5,7 +5,8 @@ public class playerMech : MonoBehaviour
 
     public Rigidbody2D rb;
     public SpriteRenderer sprite;
-    public int HealthPoints = 5;
+    public int MaxHealth = 10;
+    public int HealthPoints = 10;
     public GameObject GameOver;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpforce;
@@ -29,6 +30,7 @@ public class playerMech : MonoBehaviour
 
     void Update()
     {
+        LifeCheck();
         PunchAttack();
     }
 
