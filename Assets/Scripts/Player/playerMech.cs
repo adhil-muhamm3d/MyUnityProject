@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerMech : MonoBehaviour
 {
 
     public Rigidbody2D rb;
     public SpriteRenderer sprite;
+    public Slider HealthBar;
     public int MaxHealth = 10;
     public int HealthPoints = 10;
     public GameObject GameOver;
@@ -23,6 +25,11 @@ public class playerMech : MonoBehaviour
 
     public Punch punch;
 
+    void Start()
+    {
+        HealthBar.maxValue = MaxHealth;
+    }
+
     void Awake()
     {
         Time.timeScale = 1;
@@ -32,6 +39,7 @@ public class playerMech : MonoBehaviour
     {
         LifeCheck();
         PunchAttack();
+        SetUI();
     }
 
     void FixedUpdate()
@@ -137,6 +145,11 @@ public class playerMech : MonoBehaviour
             rb.gravityScale = DefaultGravity;
             HeroAnimator.SetBool("Fall",false);
         }
+    }
+
+    public void SetUI()
+    {
+        HealthBar.value = HealthPoints;
     }
 
 }
